@@ -1,0 +1,3 @@
+/home/amaury/Desktop/cours/M1/S2/c++/projet_m1_c++/src/build/CMakeFiles/main.dir
+/home/amaury/Desktop/cours/M1/S2/c++/projet_m1_c++/src/build/CMakeFiles/edit_cache.dir
+/home/amaury/Desktop/cours/M1/S2/c++/projet_m1_c++/src/build/CMakeFiles/rebuild_cache.dir
