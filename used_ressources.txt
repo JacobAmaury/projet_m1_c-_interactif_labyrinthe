@@ -1,2 +1,8 @@
 Cmake tutorial : https://www.youtube.com/watch?v=NGPo7mz1oa4
 vector tutorial : https://www.w3schools.com/cpp/cpp_vectors.asp
+random : https://www.w3schools.com/cpp/cpp_howto_random_number.asp
+erased : https://www.codecademy.com/resources/docs/cpp/vectors/erase
+shuffle : https://www.geeksforgeeks.org/cpp/how-to-shuffle-a-vector-in-cpp/
+objet in list : https://dev.to/dinhluanbmt/c-check-object-class-type-258d
+typeid : https://www.ibm.com/docs/fr/i/7.6.0?topic=expressions-typeid-operator-c-only
+pour les carrées dans le terminal: https://www.geeksforgeeks.org/cpp/character-literal-in-cpp-17-unicode-and-utf-8-prefix/

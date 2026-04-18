@@ -2,6 +2,7 @@
 #include <vector>
 #include <stdlib.h>
 #include <bits/stdc++.h>
+#include <locale> //pour les carrées
 #include <typeinfo>
 using namespace std;
 
@@ -17,7 +18,7 @@ class Case{
         vector<int> coord_case = {0,0};
     public:
         Case(){};
-        virtual char afficher() = 0;
+        virtual wchar_t afficher() = 0;
         virtual ~Case() = default;
 
         vector<int> get_coord_case(){return coord_case;}
@@ -30,8 +31,8 @@ class Case{
 class Mur : public Case{
     public :
         Mur():Case(){};
-        char afficher() override{
-            return '#';
+        wchar_t afficher() override{
+            return U'\u25AE';
         }
 
 
@@ -39,7 +40,7 @@ class Mur : public Case{
 class Passage : public Case{
     public :
         Passage():Case(){};
-        char afficher() override{
+        wchar_t afficher() override{
             return ' ';
         }
 
@@ -98,11 +99,11 @@ class Donjon{
         void afficher(){
             for(int i=0; i<h; i++){
                 for(int j=0; j<l; j++){
-                    cout<<grille[i][j]->afficher();
+                    wcout<<grille[i][j]->afficher();
                 }
-                cout << endl;
+                wcout << endl;
             }
-            cout << endl;
+            wcout << endl;
         }
 
         void set_entry(int x, int y){
@@ -196,6 +197,8 @@ class Donjon{
 
 
 int main(){
+    setlocale(LC_ALL, "");// pour les carrées
+    wcout.imbue(locale("")); // pour les carrés
 
     Donjon D1(15, 15);
     D1.set_entry(0,0);
