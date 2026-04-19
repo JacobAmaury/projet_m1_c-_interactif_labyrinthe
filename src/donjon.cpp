@@ -7,6 +7,9 @@
 using namespace std;
 
 
+#define VALEUR 10
+#define DEGAT 10 
+
 enum type_Case {MUR, 
                 PASSAGE, 
                 TRESOR, 
@@ -43,8 +46,24 @@ class Passage : public Case{
         wchar_t afficher() override{
             return ' ';
         }
-
-
+};
+class Tresor : public Case{
+    private:
+        int valeur;
+    public :
+        Tresor(int valeur):Case(){this->valeur=valeur;};
+        wchar_t afficher() override{
+            return '+';
+        }
+};
+class Piege : public Case{
+    private:
+        int degat;
+    public :
+        Piege(int degat):Case(){this->degat=degat;};
+        wchar_t afficher() override{
+            return 'T';
+        }
 };
 
 class CaseFactory{
@@ -59,10 +78,12 @@ class CaseFactory{
                 return new Passage();
                 break;
             case TRESOR:
+                return new Tresor(VALEUR);
                 break;
             case MONSTRE:
                 break;
             case PIEGE:
+                return new Piege(DEGAT);
                 break;
             }
             return nullptr;
@@ -97,8 +118,8 @@ class Donjon{
         } 
 
         void afficher(){
-            for(int i=0; i<h; i++){
-                for(int j=0; j<l; j++){
+            for(int i=0; i<h+2; i++){
+                for(int j=0; j<l+2; j++){
                     wcout<<grille[i][j]->afficher();
                 }
                 wcout << endl;
@@ -188,22 +209,47 @@ class Donjon{
                 if(index == 0){return;}
                 recur_back_track(chemin[index-1][0], chemin[index-1][1], index-1, not(forward));
             }
-            else{
-                return;
+        }
+
+        void placer_element(int x, int y){
+            int r = rand() % 101;
+            if(r<5){
+                grille[x][y] = CaseFactory().createCase(TRESOR);
+            }
+            //Ajout monstre
+            else if (r<13)
+            {
+                grille[x][y] = CaseFactory().createCase(PIEGE);
+            }
+            
+        }
+
+        void generer_donjon(){
+            this->recur_back_track(0,0,0,true);
+
+            int x,y;
+            int chemin_length = chemin.size();
+
+            for(int i=0; i<chemin_length; i++){
+                x = chemin[i][0];
+                y = chemin[i][1];
+                placer_element(x,y);
             }
         }
+
     
 };
 
 
 int main(){
-    setlocale(LC_ALL, "");// pour les carrées
+    setlocale(LC_ALL, "");// pour les carrées (config terminal pour unicode)
     wcout.imbue(locale("")); // pour les carrés
 
     Donjon D1(15, 15);
     D1.set_entry(0,0);
     D1.afficher();
-    D1.recur_back_track(0,0,0,true);
+    // D1.recur_back_track(0,0,0,true);
+    D1.generer_donjon();
     D1.afficher();
 
     return 0;
