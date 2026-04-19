@@ -44,6 +44,11 @@ bool Donjon::is_entry(int x, int y){
     return false;
 }
 
+bool Donjon::is_exit(int x, int y){
+    if((x == x_exit) and (y == y_exit)){return true;}
+    return false;
+}
+
 void Donjon::recur_back_track(int x, int y, int index, bool forward){
     if(is_entry(x,y) and !forward){return;}
 
@@ -143,3 +148,92 @@ void Donjon::generer_donjon(){
     }
 }
 
+void Donjon::set_exit(int x, int y){
+    wcout<<"test"<<endl;
+    if(typeid(*grille[x][y])==typeid(Mur)){
+        int dist_min, dist;
+        dist_min = 1000;
+
+        for(int i=0; i<chemin.size();i++){
+            dist = (abs(chemin[i][0]-x)+abs(chemin[i][1]-y));
+            if(dist<dist_min){
+                wcout<<"dist ="<<dist<<"x="<<chemin[i][0]<<"y="<<chemin[i][1]<<endl;
+                dist_min = dist;
+                x_exit = chemin[i][0];
+                y_exit = chemin[i][1];
+            }
+        }
+    }
+    else{
+        x_exit = x;
+        y_exit = y;
+    }
+    wcout<<"x_exit="<<x_exit<<"y_exit="<<y_exit<<endl;
+}
+
+int Donjon::trouver_chemin(int player_x, int player_y){
+    vector<vector<bool>> visite(h, vector<bool>(l,false));
+    vector<vector<vector<int>>> parent(h, vector<vector<int>>(l, vector<int>(2,0)));
+    vector<vector<int>> file;
+    vector<int> current;
+    vector<int> voisin;
+
+    file.push_back({player_x, player_y});
+    while(file.size()!=0){
+        
+        current = file[0];
+        file.erase(file.begin());
+        if(is_exit(current[0], current[1])){
+            return recons_chemin(parent, player_x, player_y);
+        }
+
+        for(int i=0; i<4; i++){
+            switch (i)
+            {
+            case 0:
+                voisin = {current[0], current[1]-1};
+                break;
+            case 1:
+                voisin = {current[0], current[1]+1};
+                break;
+            case 2:
+                voisin = {current[0]-1, current[1]};
+                break;
+            case 3:
+                voisin = {current[0]+1, current[1]};
+                break;
+            }
+            if(in_grid(voisin[0], voisin[1])){
+                if (!visite[voisin[0]][voisin[1]]){
+                    if(typeid(*grille[voisin[0]][voisin[1]])!=typeid(Mur)){
+                        
+                        visite[voisin[0]][voisin[1]]=true;
+                        parent[voisin[0]][voisin[1]][0] = current[0];
+                        parent[voisin[0]][voisin[1]][1] = current[1];
+                        file.push_back(voisin);
+                    }
+                }
+            }
+        }
+    }
+    return -1;
+
+}
+
+int Donjon::recons_chemin(vector<vector<vector<int>>> parent, int player_x, int player_y){
+    int cpt = 0;
+    vector<int> current = {x_exit, y_exit};
+
+    while (!is_entry(current[0], current[1]))
+    {
+        current = parent[current[0]][current[1]];
+        cpt++;
+    }
+    return cpt;
+}
+
+
+bool Donjon::in_grid(int x, int y){
+    if((x<0 or x>=l) or (y<0 or y>=h)){return false;}
+    return true;
+}
