@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/amaury/Desktop/cours/M1/S2/c++/projet_m1_c++/src
+CMAKE_SOURCE_DIR = /home/amaury/Desktop/cours/M1/S2/c++/projet_m1_c-_interactif_labyrinthe/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/amaury/Desktop/cours/M1/S2/c++/projet_m1_c++/src/build
+CMAKE_BINARY_DIR = /home/amaury/Desktop/cours/M1/S2/c++/projet_m1_c-_interactif_labyrinthe/src/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/amaury/Desktop/cours/M1/S2/c++/projet_m1_c++/src/build/CMakeFiles /home/amaury/Desktop/cours/M1/S2/c++/projet_m1_c++/src/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/amaury/Desktop/cours/M1/S2/c++/projet_m1_c-_interactif_labyrinthe/src/build/CMakeFiles /home/amaury/Desktop/cours/M1/S2/c++/projet_m1_c-_interactif_labyrinthe/src/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/amaury/Desktop/cours/M1/S2/c++/projet_m1_c++/src/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/amaury/Desktop/cours/M1/S2/c++/projet_m1_c-_interactif_labyrinthe/src/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -129,6 +129,54 @@ main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
+case.o: case.cpp.o
+.PHONY : case.o
+
+# target to build an object file
+case.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/case.cpp.o
+.PHONY : case.cpp.o
+
+case.i: case.cpp.i
+.PHONY : case.i
+
+# target to preprocess a source file
+case.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/case.cpp.i
+.PHONY : case.cpp.i
+
+case.s: case.cpp.s
+.PHONY : case.s
+
+# target to generate assembly for a file
+case.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/case.cpp.s
+.PHONY : case.cpp.s
+
+donjon.o: donjon.cpp.o
+.PHONY : donjon.o
+
+# target to build an object file
+donjon.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/donjon.cpp.o
+.PHONY : donjon.cpp.o
+
+donjon.i: donjon.cpp.i
+.PHONY : donjon.i
+
+# target to preprocess a source file
+donjon.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/donjon.cpp.i
+.PHONY : donjon.cpp.i
+
+donjon.s: donjon.cpp.s
+.PHONY : donjon.s
+
+# target to generate assembly for a file
+donjon.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/donjon.cpp.s
+.PHONY : donjon.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -162,6 +210,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... main"
+	@echo "... case.o"
+	@echo "... case.i"
+	@echo "... case.s"
+	@echo "... donjon.o"
+	@echo "... donjon.i"
+	@echo "... donjon.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
