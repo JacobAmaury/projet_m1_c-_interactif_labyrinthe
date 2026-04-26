@@ -153,6 +153,30 @@ case.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/case.cpp.s
 .PHONY : case.cpp.s
 
+character.o: character.cpp.o
+.PHONY : character.o
+
+# target to build an object file
+character.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/character.cpp.o
+.PHONY : character.cpp.o
+
+character.i: character.cpp.i
+.PHONY : character.i
+
+# target to preprocess a source file
+character.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/character.cpp.i
+.PHONY : character.cpp.i
+
+character.s: character.cpp.s
+.PHONY : character.s
+
+# target to generate assembly for a file
+character.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/character.cpp.s
+.PHONY : character.cpp.s
+
 donjon.o: donjon.cpp.o
 .PHONY : donjon.o
 
@@ -213,6 +237,9 @@ help:
 	@echo "... case.o"
 	@echo "... case.i"
 	@echo "... case.s"
+	@echo "... character.o"
+	@echo "... character.i"
+	@echo "... character.s"
 	@echo "... donjon.o"
 	@echo "... donjon.i"
 	@echo "... donjon.s"

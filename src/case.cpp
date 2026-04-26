@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "case.h"
+#include "character.h"
 using namespace std;
 
 
@@ -59,6 +60,9 @@ Case* CaseFactory::createCase(type_Case t){
         break;
     case PIEGE:
         return new Piege(DEGAT);
+        break;
+    case CHARACTER:
+        return new Character("toto");
         break;
     }
     return nullptr;

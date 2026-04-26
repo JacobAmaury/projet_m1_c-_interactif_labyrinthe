@@ -7,7 +7,8 @@ enum type_Case {MUR,
                 PASSAGE, 
                 TRESOR, 
                 MONSTRE, 
-                PIEGE};
+                PIEGE,
+                CHARACTER};
 
 class Case{
     private:

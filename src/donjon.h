@@ -9,6 +9,7 @@ class Donjon{
     private: 
         vector<vector<Case*>> grille;
         vector<vector<int>> chemin;
+        vector<int> player_coord;
 
         int l, h;
         int x_entry, y_entry;;
@@ -25,6 +26,10 @@ class Donjon{
         void recur_back_track(int x, int y, int index, bool forward);
         void placer_element(int x, int y);
         void generer_donjon();
+        void move_player(vector<int> new_coord);
+        bool move_player(char command);
+        bool player_at_exit();
+
         
         int trouver_chemin(int player_x, int player_y);
         int recons_chemin(vector<vector<vector<int>>> parent, int player_x, int player_y);

@@ -5,6 +5,7 @@ main: \
   CMakeFiles/main.dir/main.cpp.o \
   CMakeFiles/main.dir/donjon.cpp.o \
   CMakeFiles/main.dir/case.cpp.o \
+  CMakeFiles/main.dir/character.cpp.o \
   /usr/lib/gcc/x86_64-redhat-linux/15/libstdc++.so \
   /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libm.so \
   /usr/lib/gcc/x86_64-redhat-linux/15/../../../../lib64/libm.so \
@@ -44,6 +45,8 @@ CMakeFiles/main.dir/main.cpp.o:
 CMakeFiles/main.dir/donjon.cpp.o:
 
 CMakeFiles/main.dir/case.cpp.o:
+
+CMakeFiles/main.dir/character.cpp.o:
 
 /usr/lib/gcc/x86_64-redhat-linux/15/libstdc++.so:
 

@@ -2,6 +2,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/main.dir/link.d"
   "CMakeFiles/main.dir/case.cpp.o"
   "CMakeFiles/main.dir/case.cpp.o.d"
+  "CMakeFiles/main.dir/character.cpp.o"
+  "CMakeFiles/main.dir/character.cpp.o.d"
   "CMakeFiles/main.dir/donjon.cpp.o"
   "CMakeFiles/main.dir/donjon.cpp.o.d"
   "CMakeFiles/main.dir/main.cpp.o"

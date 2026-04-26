@@ -293,4 +293,5 @@ CMakeFiles/main.dir/donjon.cpp.o: \
  /usr/include/c++/15/bits/fs_path.h /usr/include/c++/15/bits/fs_dir.h \
  /usr/include/c++/15/bits/fs_ops.h /usr/include/c++/15/memory_resource \
  /home/amaury/Desktop/cours/M1/S2/c++/projet_m1_c-_interactif_labyrinthe/src/case.h \
- /home/amaury/Desktop/cours/M1/S2/c++/projet_m1_c-_interactif_labyrinthe/src/donjon.h
+ /home/amaury/Desktop/cours/M1/S2/c++/projet_m1_c-_interactif_labyrinthe/src/donjon.h \
+ /home/amaury/Desktop/cours/M1/S2/c++/projet_m1_c-_interactif_labyrinthe/src/character.h

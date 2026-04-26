@@ -6,6 +6,7 @@
 #include <typeinfo>
 #include "case.h"
 #include "donjon.h"
+#include "character.h"
 using namespace std;
 
 
@@ -36,7 +37,10 @@ void Donjon::afficher(){
 void Donjon::set_entry(int x, int y){
     x_entry = x;
     y_entry = y;
-    grille[x][y] = CaseFactory().createCase(PASSAGE);
+    player_coord = {x,y};
+
+    grille[x][y] = CaseFactory().createCase(CHARACTER);
+
 }
 
 bool Donjon::is_entry(int x, int y){
@@ -232,6 +236,57 @@ int Donjon::recons_chemin(vector<vector<vector<int>>> parent, int player_x, int 
     return cpt;
 }
 
+void Donjon::move_player(vector<int> new_coord){
+    int nx = new_coord[0];
+    int ny = new_coord[1];
+
+    if(!in_grid(nx, ny) || typeid(*grille[nx][ny]) == typeid(Mur)){
+        return;
+    }
+
+    Case* player = grille[player_coord[0]][player_coord[1]];
+    grille[player_coord[0]][player_coord[1]] = CaseFactory().createCase(PASSAGE);
+    grille[nx][ny] = player;
+    player_coord = {nx, ny};
+}
+
+bool Donjon::move_player(char command){
+    int dx = 0;
+    int dy = 0;
+
+    switch(command){
+        case 'w':
+            dx = -1;
+            break;
+        case 's':
+            dx = 1;
+            break;
+        case 'a':
+            dy = -1;
+            break;
+        case 'd':
+            dy = 1;
+            break;
+    }
+
+    int nx = player_coord[0] + dx;
+    int ny = player_coord[1] + dy;
+
+    if(!in_grid(nx, ny) || typeid(*grille[nx][ny]) == typeid(Mur)){
+        return false;
+    }
+
+    Case* player = grille[player_coord[0]][player_coord[1]];
+    grille[player_coord[0]][player_coord[1]] = CaseFactory().createCase(PASSAGE);
+    grille[nx][ny] = player;
+    player_coord = {nx, ny};
+
+    return true;
+}
+
+bool Donjon::player_at_exit(){
+    return is_exit(player_coord[0], player_coord[1]);
+}
 
 bool Donjon::in_grid(int x, int y){
     if((x<0 or x>=l) or (y<0 or y>=h)){return false;}
