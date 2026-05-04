@@ -23,9 +23,9 @@ int main(){
     char commande;
     while(!D1.player_at_exit()){
         D1.afficher();
-        wcout << "Deplacement: z=haut, s=bas, q=gauche, d=droite, x=quitter" << endl;
+        wcout << "Deplacement: w=haut, s=bas, a=gauche, d=droite, x=quitter" << endl;
         cin >> commande;
-        if(commande == 'x'){
+        if(commande == 'x' || commande == 'X'){
             wcout << "Sortie annulee." << endl;
             break;
         }

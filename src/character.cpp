@@ -8,6 +8,7 @@ using namespace std;
 Character::Character(string name){
     this->name = name;
     this->pv = 100;
+    this->tresors = 0;
 }
 
 wchar_t Character::afficher(){
@@ -15,21 +16,36 @@ wchar_t Character::afficher(){
 }
 
 void Character::add_tres(){
-    inventory[0] += 1;
+    tresors += 1;
 }
 
-void Character::set_pv(int add, int set){
-    if(add != 0){
-        pv = set;
+bool Character::use_tresor(){
+    if(tresors <= 0){
+        return false;
     }
-    else{
-        pv += add;
-    }
+    tresors -= 1;
+    heal(3);
+    return true;
 }
 
-bool Character::is_dead(){
-    if(pv <= 0){
-        return true;
-    }
-    else{return false;}
+int Character::get_tresors() const {
+    return tresors;
+}
+
+int Character::get_pv() const {
+    return pv;
+}
+
+void Character::heal(int amount){
+    pv += amount;
+    if(pv > 100) pv = 100;
+}
+
+void Character::damage(int amount){
+    pv -= amount;
+    if(pv < 0) pv = 0;
+}
+
+bool Character::is_dead() const {
+    return pv <= 0;
 }

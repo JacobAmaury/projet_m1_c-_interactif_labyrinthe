@@ -41,7 +41,7 @@ class Tresor : public Case{
         int valeur;
     public :
         Tresor(int valeur);
-        wchar_t afficher();
+        wchar_t afficher() override;
 };
 
 class Piege : public Case{
@@ -49,7 +49,18 @@ class Piege : public Case{
         int degat;
     public :
         Piege(int degat);
-        wchar_t afficher();
+        wchar_t afficher() override;
+};
+
+class Monstre : public Case{
+    private:
+        int pv;
+    public:
+        Monstre(int pv = 20);
+        wchar_t afficher() override;
+        void damage(int amount);
+        int get_pv() const;
+        bool is_dead() const;
 };
 
 class CaseFactory{

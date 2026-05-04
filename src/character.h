@@ -12,15 +12,18 @@ using namespace std;
 class Character: public Case{
     private:
         int pv;
-        vector<int> inventory;  
+        int tresors;
     public:
-
         string name;
         Character(string name);
-        wchar_t afficher();
+        wchar_t afficher() override;
         void add_tres();
-        void set_pv(int add, int set);
-        bool is_dead();
+        bool use_tresor();
+        int get_tresors() const;
+        int get_pv() const;
+        void heal(int amount);
+        void damage(int amount);
+        bool is_dead() const;
 };
 
 

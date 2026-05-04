@@ -44,26 +44,39 @@ wchar_t Piege::afficher(){
     return 'T';
 }
 
+Monstre::Monstre(int pv):Case(){this->pv = pv;};
+wchar_t Monstre::afficher(){
+    return 'M';
+}
+
+void Monstre::damage(int amount){
+    pv -= amount;
+    if(pv < 0) pv = 0;
+}
+
+int Monstre::get_pv() const {
+    return pv;
+}
+
+bool Monstre::is_dead() const {
+    return pv <= 0;
+}
+
 Case* CaseFactory::createCase(type_Case t){
     switch (t)
     {
     case MUR:
         return new Mur();
-        break;
     case PASSAGE:
         return new Passage();
-        break;
     case TRESOR:
         return new Tresor(VALEUR);
-        break;
     case MONSTRE:
-        break;
+        return new Monstre();
     case PIEGE:
         return new Piege(DEGAT);
-        break;
     case CHARACTER:
-        return new Character("toto");
-        break;
+        return new Character("Heros");
     }
     return nullptr;
 };
