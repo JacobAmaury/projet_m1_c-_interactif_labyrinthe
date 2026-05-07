@@ -16,7 +16,7 @@
 
 \section{Introduction}
 
-Dans ce projet, j'ai codé un labyrinthe interactif en C++. Le code creer un donjon, place le joueur à une entrée, puis on peut se déplacer dans la map. Mon objectif était de construire un projet structuré, lisible et suffisamment modulaire.
+Dans ce projet, j'ai codé un labyrinthe interactif en C++. Le code creer un donjon, placer le joueur à une entrée, puis on peut se déplacer dans la map. Mon objectif était de construire un projet structuré, lisible et suffisamment modulaire pour le modifier facilement.
 
 Le jeu fonctionne dans un terminal. À chaque tour, la grille est affichée avec la position du joueur, ses points de vie, son inventaire, la distance jusqu'à la sortie et les déplacements possibles. Le joueur peut se déplacer avec les touches \texttt{w}, \texttt{s}, \texttt{a} et \texttt{d}, ou quitter avec \texttt{x}.
 
@@ -71,6 +71,14 @@ Pour la compilation, j'ai utilisé CMake avec un fichier \texttt{CMakeLists.txt}
 
 Ce projet était une bonne excuse pour pouvoir me former à ca.
 
+
+Vous pouvez testez de compiler le jeu en faisant :
+\begin{verbatim}
+    make clean
+    make
+\end{verbatim}
+dans le dossier build.
+
 \section{Difficultés rencontrées}
 
 La principale difficulté a été le calcul de la distance jusqu'à la sortie. Le BFS doit partir de la position actuelle du joueur et non seulement de l'entrée du labyrinthe. Lors d'un débug, j'ai remarqué que le programme pouvait se bloquer après quelques déplacements parce que la reconstruction du chemin ne s'arrêtait pas au bon endroit. J'ai donc corrigé la logique pour que le chemin soit reconstruit jusqu'à la position réelle du joueur.
@@ -87,7 +95,4 @@ Vous pouvez regarder mon github pour mes commit régulier: \url{https://github.c
 Ce projet m'a permis de mettre en pratique plusieurs notions importantes de C++ : la programmation orientée objet, l'héritage, le polymorphisme, la séparation en fichiers \texttt{.h} et \texttt{.cpp}, ainsi que la compilation d'un projet multi-fichiers avec CMake. Le résultat obtenu est un jeu de labyrinthe fonctionnel dans le terminal, avec une génération aléatoire, des déplacements, des événements sur les cases, des combats et un calcul de distance jusqu'à la sortie.
 
 Le projet pourrait encore être amélioré, par exemple avec une meilleure gestion de la mémoire, une interface plus avancée ou plusieurs niveaux, mais il répond déjà aux principales fonctionnalités attendues pour un donjon interactif.
-
-
-
 \end{document}
