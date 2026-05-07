@@ -7,7 +7,7 @@ using namespace std;
 
 Character::Character(string name){
     this->name = name;
-    this->pv = 100;
+    this->pv = 40;
     this->tresors = 0;
 }
 

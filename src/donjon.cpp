@@ -205,6 +205,7 @@ int Donjon::trouver_chemin(int player_x, int player_y) const {
     vector<int> voisin;
 
     file.push_back({player_x, player_y});
+    visite[player_x][player_y] = true;
     while(file.size()!=0){
         
         current = file[0];
@@ -250,7 +251,7 @@ int Donjon::recons_chemin(vector<vector<vector<int>>> parent, int player_x, int 
     int cpt = 0;
     vector<int> current = {x_exit, y_exit};
 
-    while (!is_entry(current[0], current[1]))
+    while (!(current[0] == player_x && current[1] == player_y))
     {
         current = parent[current[0]][current[1]];
         cpt++;

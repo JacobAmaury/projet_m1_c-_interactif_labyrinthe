@@ -76,7 +76,7 @@ Case* CaseFactory::createCase(type_Case t){
     case PIEGE:
         return new Piege(DEGAT);
     case CHARACTER:
-        return new Character("Heros");
+        return new Character("Maelle");
     }
     return nullptr;
 };

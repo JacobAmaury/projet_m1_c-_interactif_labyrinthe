@@ -1,6 +1,7 @@
 #include <iostream>
 #include "donjon.h"
 #include "case.h"
+#include <cstdlib> 
 // #include "character.h"
 using namespace std;
 
@@ -22,6 +23,7 @@ int main(){
 
     char commande;
     while(!D1.player_at_exit()){
+        std::system("clear");
         D1.afficher();
         wcout << "Deplacement: w=haut, s=bas, a=gauche, d=droite, x=quitter" << endl;
         cin >> commande;
